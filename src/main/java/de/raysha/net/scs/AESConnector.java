@@ -54,7 +54,14 @@ public class AESConnector extends AbstractConnector {
 		this(socket, initialiseKey(password));
 	}
 
-	private static SecretKey initialiseKey(String password){
+	/**
+	 * Create from string password a {@link SecretKey} that can be used for the secure
+	 * connection.
+	 *
+	 * @param password The plain text password.
+	 * @return The {@link SecretKey} that can used for secure connection.
+	 */
+	public static SecretKey initialiseKey(String password){
 		try{
 			SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
 			KeySpec spec = new PBEKeySpec(password.toCharArray(), PASSWORD_SALT, 65536, 256);
