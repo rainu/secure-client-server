@@ -14,6 +14,8 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import de.raysha.net.scs.exception.NoSerializerFoundException;
+import de.raysha.net.scs.exception.UnknownMessageException;
 import de.raysha.net.scs.model.Message;
 import de.raysha.net.scs.model.SimpleMessage;
 
@@ -165,5 +167,25 @@ public class AESConnectorTest {
 			assertTrue(msg instanceof SimpleMessage);
 			assertEquals(message, ((SimpleMessage)msg).getMessage());
 		}
+	}
+
+	@Test(expected = UnknownMessageException.class)
+	public void unknownMessageOnReceive() throws Exception{
+		final String message = "Hello World!";
+
+		AESConnector serverConnector = new AESConnector(server, secretKey);
+		AESConnector clientConnector = buildConnector(client);
+
+		clientConnector.send(new SimpleMessage(message));
+		serverConnector.receive();
+	}
+
+	@Test(expected = NoSerializerFoundException.class)
+	public void noSerializerOnSend() throws Exception{
+		final String message = "Hello World!";
+
+		AESConnector clientConnector = new AESConnector(client, secretKey);
+
+		clientConnector.send(new SimpleMessage(message));
 	}
 }
