@@ -251,4 +251,11 @@ public abstract class AbstractConnector {
 			this.rawMessage = rawMessage;
 		}
 	}
+
+	@Override
+	public String toString() {
+		if(socket == null) super.toString();
+
+		return socket.toString();
+	}
 }
