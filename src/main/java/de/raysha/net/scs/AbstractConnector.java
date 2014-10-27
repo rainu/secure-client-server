@@ -90,6 +90,15 @@ public abstract class AbstractConnector {
 	}
 
 	/**
+	 * Disconnect from my partner.
+	 *
+	 * @throws IOException if an I/O error occurs when closing my socket.
+	 */
+	public void disconnect() throws IOException {
+		socket.close();
+	}
+
+	/**
 	 * Use the registered {@link MessageSerializer} to serialize the given message. If there was no serializer
 	 * found, an {@link NoSerializerFoundException} will be thrown!
 	 *
