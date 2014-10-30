@@ -107,7 +107,7 @@ public class AESConnectorTest {
 
 	@Test
 	public void clientToServerVeryLongMessage() throws Exception{
-		final String message = StringUtils.repeat("Long", AbstractConnector.BUFFER_SIZE);
+		final String message = StringUtils.repeat("Long", Connector.BUFFER_SIZE);
 
 		AESConnector serverConnector = buildConnector(server);
 		AESConnector clientConnector = buildConnector(client);
@@ -121,7 +121,7 @@ public class AESConnectorTest {
 
 	@Test
 	public void serverToClientVeryLongMessage() throws Exception{
-		final String message = StringUtils.repeat("Long", AbstractConnector.BUFFER_SIZE);
+		final String message = StringUtils.repeat("Long", Connector.BUFFER_SIZE);
 
 		AESConnector serverConnector = buildConnector(server);
 		AESConnector clientConnector = buildConnector(client);

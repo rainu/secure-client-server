@@ -8,11 +8,11 @@ import java.security.InvalidKeyException;
 import javax.crypto.SecretKey;
 
 /**
- * This {@link AbstractServer} establish a {@link AESConnector} for each incoming connections.
+ * This {@link Server} establish a {@link AESConnector} for each incoming connections.
  *
  * @author rainu
  */
-public abstract class AESServer extends AbstractServer {
+public abstract class AESServer extends Server {
 	private final SecretKey secretKey;
 	private final String stringKey;
 

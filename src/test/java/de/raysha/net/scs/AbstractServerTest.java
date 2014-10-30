@@ -12,8 +12,8 @@ import org.junit.Test;
 
 public class AbstractServerTest {
 
-	private AbstractServer buildServer() throws IOException{
-		return new AbstractServer(0) {
+	private Server buildServer() throws IOException{
+		return new Server(0) {
 			@Override
 			protected void handleNewSocket(Socket newSocket) {
 			}
@@ -22,14 +22,14 @@ public class AbstractServerTest {
 
 	@Test(expected = IllegalStateException.class)
 	public void stopBeforeStart() throws IOException{
-		AbstractServer server = buildServer();
+		Server server = buildServer();
 
 		server.shutdown();
 	}
 
 	@Test(expected = IllegalStateException.class)
 	public void startMultiple() throws IOException{
-		AbstractServer server = buildServer();
+		Server server = buildServer();
 
 		server.start();
 		server.start();
@@ -37,7 +37,7 @@ public class AbstractServerTest {
 
 	@Test(expected = IllegalStateException.class)
 	public void stopMultiple() throws IOException{
-		AbstractServer server = buildServer();
+		Server server = buildServer();
 
 		server.start();
 		server.shutdown();
@@ -49,7 +49,7 @@ public class AbstractServerTest {
 		ServerSocket socket = new ServerSocket(0);
 		final List<Socket> list = new ArrayList<Socket>();
 
-		AbstractServer server = new AbstractServer(socket) {
+		Server server = new Server(socket) {
 			@Override
 			protected void handleNewSocket(Socket newSocket) {
 				list.add(newSocket);
@@ -67,7 +67,7 @@ public class AbstractServerTest {
 	@Test(timeout = 1000)
 	public void stopSoft() throws IOException{
 		ServerSocket socket = new ServerSocket(0);
-		AbstractServer server = new AbstractServer(socket) {
+		Server server = new Server(socket) {
 			@Override
 			protected void handleNewSocket(Socket newSocket) {
 				while(isShuttingDown()){
@@ -88,7 +88,7 @@ public class AbstractServerTest {
 	@Test(timeout = 5000)
 	public void stopHard() throws IOException, InterruptedException{
 		ServerSocket socket = new ServerSocket(0);
-		AbstractServer server = new AbstractServer(socket) {
+		Server server = new Server(socket) {
 			@Override
 			protected void handleNewSocket(Socket newSocket) {
 				while(true){

@@ -16,12 +16,12 @@ import javax.crypto.spec.SecretKeySpec;
 import de.raysha.net.scs.model.Message;
 
 /**
- * This class is a special {@link AbstractConnector} and it is responsible for secure communication between server and client.
+ * This class is a special {@link Connector} and it is responsible for secure communication between server and client.
  * All messages will be encrypt by the AES-Cipher.
  *
  * @author rainu
  */
-public class AESConnector extends AbstractConnector {
+public class AESConnector extends Connector {
 	private static final byte[] PASSWORD_SALT = "Secure-Client-Server-Salt".getBytes();
 	private final Cipher encryptCipher;
 	private final Cipher decryptCipher;
@@ -113,10 +113,13 @@ public class AESConnector extends AbstractConnector {
 	@Override
 	public void send(Message message) throws IOException {
 		byte[] rawMessage = serialize(message);
-		try {
-			rawMessage = encryptCipher.doFinal(rawMessage);
-		} catch (Exception e) {
-			throw new IllegalStateException(e);
+
+		synchronized (encryptCipher) {
+			try {
+				rawMessage = encryptCipher.doFinal(rawMessage);
+			} catch (Exception e) {
+				throw new IllegalStateException(e);
+			}
 		}
 
 		sendRaw(message.getClass(), rawMessage);
@@ -125,12 +128,15 @@ public class AESConnector extends AbstractConnector {
 	@Override
 	public Message receive() throws IOException {
 		RawMessage rawMessage = receiveRaw();
+
 		final byte[] decryptedMessage;
 
-		try {
-			decryptedMessage = decryptCipher.doFinal(rawMessage.rawMessage);
-		} catch (Exception e) {
-			throw new IllegalStateException(e);
+		synchronized (decryptCipher) {
+			try {
+				decryptedMessage = decryptCipher.doFinal(rawMessage.rawMessage);
+			} catch (Exception e) {
+				throw new IllegalStateException(e);
+			}
 		}
 
 		return deserialize(rawMessage.messageId, decryptedMessage);
