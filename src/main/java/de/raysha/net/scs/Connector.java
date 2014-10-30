@@ -18,7 +18,7 @@ import de.raysha.net.scs.utils.HashGenerator;
  *
  * @author rainu
  */
-public abstract class AbstractConnector {
+public abstract class Connector {
 	protected static final int BUFFER_SIZE = 8096;
 	private static final int NORMALIZED_MESSAGE_ID_LENGTH = 32; //length of md5 string
 
@@ -32,7 +32,7 @@ public abstract class AbstractConnector {
 	protected final Map<Class<? extends Message>, MessageSerializer<? extends Message>> messageSerializer =
 			new HashMap<Class<? extends Message>, MessageSerializer<? extends Message>>();
 
-	public AbstractConnector(Socket socket) {
+	public Connector(Socket socket) {
 		this.socket = socket;
 	}
 
@@ -215,10 +215,11 @@ public abstract class AbstractConnector {
 
 				builder.put(buffer, 0, read);
 			}
-		}
-		builder.flip();
 
-		return parseRawMessage(builder, length);
+			builder.flip();
+
+			return parseRawMessage(builder, length);
+		}
 	}
 
 	private int receiveLength(InputStream in) throws IOException {

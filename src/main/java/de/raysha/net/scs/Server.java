@@ -11,17 +11,17 @@ import java.net.Socket;
  *
  * @author rainu
  */
-public abstract class AbstractServer {
+public abstract class Server {
 	private final ServerSocket serverSocket;
 
 	private final Thread acceptThread;
 	private boolean threadStatus = false;
 
-	public AbstractServer(int port) throws IOException {
+	public Server(int port) throws IOException {
 		this(new ServerSocket(port));
 	}
 
-	public AbstractServer(ServerSocket socket) {
+	public Server(ServerSocket socket) {
 		this.serverSocket = socket;
 		this.acceptThread = new Thread(acceptLoop, "AbstractServer-Connection-Accepter");
 	}
