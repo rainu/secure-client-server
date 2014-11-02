@@ -1,4 +1,4 @@
-package de.raysha.net.scs;
+package de.raysha.lib.net.scs;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,11 +7,11 @@ import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.raysha.net.scs.exception.NoSerializerFoundException;
-import de.raysha.net.scs.exception.UnknownMessageException;
-import de.raysha.net.scs.model.Message;
-import de.raysha.net.scs.model.serialize.MessageSerializer;
-import de.raysha.net.scs.utils.HashGenerator;
+import de.raysha.lib.net.scs.exception.NoSerializerFoundException;
+import de.raysha.lib.net.scs.exception.UnknownMessageException;
+import de.raysha.lib.net.scs.model.Message;
+import de.raysha.lib.net.scs.model.serialize.MessageSerializer;
+import de.raysha.lib.net.scs.utils.HashGenerator;
 
 /**
  * This class is an abstraction level for make it easy to communicate between server and client over {@link Socket}s.

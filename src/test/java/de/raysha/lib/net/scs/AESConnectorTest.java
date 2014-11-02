@@ -1,4 +1,4 @@
-package de.raysha.net.scs;
+package de.raysha.lib.net.scs;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -14,10 +14,12 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import de.raysha.net.scs.exception.NoSerializerFoundException;
-import de.raysha.net.scs.exception.UnknownMessageException;
-import de.raysha.net.scs.model.Message;
-import de.raysha.net.scs.model.SimpleMessage;
+import de.raysha.lib.net.scs.AESConnector;
+import de.raysha.lib.net.scs.Connector;
+import de.raysha.lib.net.scs.exception.NoSerializerFoundException;
+import de.raysha.lib.net.scs.exception.UnknownMessageException;
+import de.raysha.lib.net.scs.model.Message;
+import de.raysha.lib.net.scs.model.SimpleMessage;
 
 public class AESConnectorTest {
 	private static String secretKey;

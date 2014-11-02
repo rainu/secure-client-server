@@ -1,4 +1,4 @@
-package de.raysha.net.scs.exception;
+package de.raysha.lib.net.scs.exception;
 
 public class SerializeException extends RuntimeException {
 	private static final long serialVersionUID = -8054880647494138021L;

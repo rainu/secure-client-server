@@ -1,6 +1,6 @@
-package de.raysha.net.scs.exception;
+package de.raysha.lib.net.scs.exception;
 
-import de.raysha.net.scs.model.Message;
+import de.raysha.lib.net.scs.model.Message;
 
 public class NoSerializerFoundException extends SerializeException {
 	private static final long serialVersionUID = 5785670435364098008L;

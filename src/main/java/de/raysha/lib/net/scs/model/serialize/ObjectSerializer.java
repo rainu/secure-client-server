@@ -1,4 +1,4 @@
-package de.raysha.net.scs.model.serialize;
+package de.raysha.lib.net.scs.model.serialize;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -7,8 +7,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-import de.raysha.net.scs.exception.SerializeException;
-import de.raysha.net.scs.model.Message;
+import de.raysha.lib.net.scs.exception.SerializeException;
+import de.raysha.lib.net.scs.model.Message;
 
 /**
  * Normally this {@link MessageSerializer} can be used for every {@link Message} that

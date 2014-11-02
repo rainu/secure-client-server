@@ -1,4 +1,4 @@
-package de.raysha.net.scs;
+package de.raysha.lib.net.scs;
 
 import java.io.IOException;
 import java.net.ServerSocket;

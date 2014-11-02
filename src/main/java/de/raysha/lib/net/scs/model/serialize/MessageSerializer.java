@@ -1,6 +1,6 @@
-package de.raysha.net.scs.model.serialize;
+package de.raysha.lib.net.scs.model.serialize;
 
-import de.raysha.net.scs.model.Message;
+import de.raysha.lib.net.scs.model.Message;
 
 /**
  * A class that implements this interface is responsible for de-/serialze a {@link Message}

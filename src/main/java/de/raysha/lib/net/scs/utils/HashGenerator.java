@@ -1,4 +1,4 @@
-package de.raysha.net.scs.utils;
+package de.raysha.lib.net.scs.utils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

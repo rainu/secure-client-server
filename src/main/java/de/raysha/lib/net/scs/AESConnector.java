@@ -1,4 +1,4 @@
-package de.raysha.net.scs;
+package de.raysha.lib.net.scs;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -13,7 +13,7 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import de.raysha.net.scs.model.Message;
+import de.raysha.lib.net.scs.model.Message;
 
 /**
  * This class is a special {@link Connector} and it is responsible for secure communication between server and client.
