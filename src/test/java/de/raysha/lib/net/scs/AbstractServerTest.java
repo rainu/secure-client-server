@@ -72,7 +72,7 @@ public class AbstractServerTest {
 		Server server = new Server(socket) {
 			@Override
 			protected void handleNewSocket(Socket newSocket) {
-				while(isShuttingDown()){
+				while(!isShuttingDown()){
 					try {
 						Thread.sleep(50);
 					} catch (InterruptedException e) {}
